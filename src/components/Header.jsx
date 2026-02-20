@@ -2,9 +2,9 @@ import React from 'react';
 
 function Header() {
   return (
-    <div>
+    <div className="header-container">
       <h1>
-        <span className="smart"> Smart </span> 
+        <span className="smart"> Smart </span>
         <span className="spend"> Spend </span>
       </h1>
     </div>

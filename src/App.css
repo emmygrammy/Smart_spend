@@ -4,16 +4,44 @@ body {
   height: 100vh;
 
   display: flex;
-  justify-content: center;   /* horizontal center */
-  align-items: center;       /* vertical center */
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
 
   background-color: #f4f4f4; /* optional */
 }
 
-.smart{
-  color: #DC3545;
+.header-container {
+  text-align: center;
+  margin-bottom: 2px;
 }
 
-.spend{
-  color: #28A745;
+.smart {
+  color: #dc3545;
+}
+
+.spend {
+  color: #28a745;
+}
+
+hr {
+  /* border: none; */
+  height: 1px;
+  background-color: #f4f4f4;
+  margin: 2px 0;
+}
+
+.small-rectangle {
+  display: inline-block; /* Important */
+  padding: 6px 14px; /* Controls size */
+  background-color: #8e6cef;
+  color: white;
+  border-radius: 6px;
+  font-size: 14px; /* small rounded corners */
+}
+
+.balance-container {
+  display: flex; /* Makes items horizontal */
+  gap: 20px; /* Space between them */
+  align-items: center;
+  margin-top: 2px;
 }
