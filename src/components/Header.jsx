@@ -3,7 +3,10 @@ import React from 'react';
 function Header() {
   return (
     <div>
-      <h1>Smart Spend</h1>
+      <h1>
+        <span className="smart"> Smart </span> 
+        <span className="spend"> Spend </span>
+      </h1>
     </div>
   );
 }
