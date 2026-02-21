@@ -1,62 +1,44 @@
-const transactions = [
-  {
-    description: 'Salary',
-    amount: 45000,
-    type: 'income',
-  },
-  {
-    description: 'Groceries',
-    amount: 6000,
-    type: 'expense',
-  },
-  {
-    description: 'Freelance Project',
-    amount: 15000,
-    type: 'income',
-  },
-  {
-    description: 'Rent',
-    amount: 12000,
-    type: 'expense',
-  },
-];
-
-function Transaction() {
+function Transaction({ transactions, setTransactionToDelete }) {
   return (
     <div>
+      <h2>Transaction</h2>
 
-      <div>
-        <h2>Transaction</h2>
-        <TransactionList />
-      </div>
-      
+      <TransactionList
+        transactions={transactions}
+        setTransactionToDelete={setTransactionToDelete}
+      />
     </div>
   );
 }
 
-function TransactionList() {
+function TransactionList({ transactions, setTransactionToDelete }) {
   return (
     <div className="transaction-list">
-      {transactions.map((transaction, index) => (
-        <TransactionItem key={index} transaction={transaction} />
+      {transactions.map((transaction) => (
+        <TransactionItem
+          key={transaction.id}
+          transaction={transaction}
+          setTransactionToDelete={setTransactionToDelete}
+        />
       ))}
     </div>
   );
 }
 
-function TransactionItem({ transaction }) {
+function TransactionItem({ transaction, setTransactionToDelete }) {
   return (
     <div className={`Transaction-item ${transaction.type === 'income' ? 'income' : 'expense'}`}>
-      {/* Left side */}
       <div className="left">
         <span>{transaction.description}</span>
         <span>₦{transaction.amount}</span>
       </div>
 
-      {/* Right side */}
       <div className="right">
         <span className="type">{transaction.type}</span>
-        <span className="delete">🗑️</span>
+
+        <span className="delete" onClick={() => setTransactionToDelete(transaction.id)}>
+          🗑️
+        </span>
       </div>
     </div>
   );

@@ -1,12 +1,58 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+
 import Header from './components/Header';
 import BalanceSummary from './components/BalanceSummary';
 import Transaction from './components/Transaction';
 import AddTransaction from './components/AddTransaction';
 import Type from './components/Type';
+import ConfirmModal from './components/ConfirmModal.jsx';
+
+
+
+const initialTransactions = [
+  {
+    description: 'Salary',
+    amount: 45000,
+    type: 'income',
+    id: 1,
+  },
+  {
+    description: 'Groceries',
+    amount: 6000,
+    type: 'expense',
+    id: 2,
+  },
+  {
+    description: 'Freelance Project',
+    amount: 15000,
+    type: 'income',
+    id: 3,
+  },
+  {
+    description: 'Rent',
+    amount: 12000,
+    type: 'expense',
+    id: 4,
+  },
+];
 
 function App() {
+  const [transactions, setTransactions] = useState(initialTransactions);
+  const [transactionToDelete, setTransactionToDelete] = useState(null);
+
+  const addTransaction = (transaction) => {
+    // Add new transaction to the transactions list
+    setTransactions((prevTransactions) => [...prevTransactions, transaction]);
+  };
+
+  const deleteTransaction = (id) => {
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter((transaction) => transaction.id !== id)
+    );
+  };
+
   return (
     <div className="App">
       <Header />
@@ -15,9 +61,24 @@ function App() {
       <hr />
       <Type />
       <hr />
-      <Transaction />
+
+      {transactionToDelete && (
+        <ConfirmModal
+          onConfirm={() => {
+            deleteTransaction(transactionToDelete);
+            setTransactionToDelete(null);
+          }}
+          onCancel={() => setTransactionToDelete(null)}
+        />
+      )}
+      <Transaction
+        transactions={transactions}
+        onDeleteTransaction={deleteTransaction}
+        transactionToDelete={transactionToDelete}
+        setTransactionToDelete={setTransactionToDelete}
+      />
       <hr />
-      <AddTransaction />
+      <AddTransaction onAddTransaction={addTransaction} />
       <hr />
     </div>
   );
