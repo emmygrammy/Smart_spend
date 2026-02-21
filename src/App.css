@@ -16,7 +16,7 @@ body {
 }
 
 .smart {
-  color: #dc3545;
+  color: #007BFF;
 }
 
 .spend {
@@ -44,4 +44,152 @@ hr {
   gap: 20px; /* Space between them */
   align-items: center;
   margin-top: 2px;
+}
+
+.Transaction-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #28a745;
+  border-radius: 6px;
+  color: white;
+ 
+  
+}
+
+/* Left side */
+.left {
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  gap: 8px;
+}
+
+/* Right side */
+.right {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: auto;   /* pushes entire group to extreme end */
+}
+.type {
+  padding: 4px 8px;
+  border-radius: 8px;
+  background-color: #D4EDDA;
+  color: #155724;
+}
+
+
+.Transaction-item .delete {
+  cursor: pointer;
+  margin-left: 10px;
+  color: #ff4d4f;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.Transaction-item .delete:hover {
+  transform: scale(1.2);
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 10px;  
+  margin-bottom: 20px;            /* space between each transaction */
+}
+
+.Transaction-item.income {
+  background-color: #28a745;
+  color: white;
+}
+
+.Transaction-item.expense {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+/* Make the 3 inputs horizontal */
+.form-row {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end; /* aligns inputs nicely */
+}
+
+/* Each field group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* equal width */
+}
+
+.transaction-form input,
+.transaction-form select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+}
+
+/* Button full width below */
+.button-wrapper {
+  display: flex;
+  justify-content: center;  /* centers button horizontally */
+  margin-top: 20px;
+}
+
+.button-wrapper button {
+  min-width: 300px;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button-wrapper button:hover {
+  background-color: #dc3545;
+  transform: translateY(-2px);
+}
+
+/* Parent container - horizontal layout */
+.type-container {
+  display: flex;
+  gap: 5px;             /* space between each box */
+  justify-content: center; /* center all boxes horizontally */
+  margin: 10px 0;
+}
+
+/* Each box */
+.type-box {
+  background-color: #007BFF; /* Bootstrap blue */
+  color: white;
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+  text-align: center;
+  min-width: 80px; /* makes all boxes roughly same width */
+}
+
+/* Hover effect */
+.type-box:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
