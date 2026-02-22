@@ -26,11 +26,18 @@ function TransactionList({ transactions, setTransactionToDelete }) {
 }
 
 function TransactionItem({ transaction, setTransactionToDelete }) {
+const formatCurrency = (amount) =>
+  Number(amount).toLocaleString('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+    minimumFractionDigits: 0,
+  });
+
   return (
     <div className={`Transaction-item ${transaction.type === 'income' ? 'income' : 'expense'}`}>
       <div className="left">
         <span>{transaction.description}</span>
-        <span>₦{transaction.amount}</span>
+        <span>{formatCurrency(transaction.amount)}</span>
       </div>
 
       <div className="right">

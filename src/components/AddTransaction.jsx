@@ -4,18 +4,19 @@ function AddTransaction({ onAddTransaction  }) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('income');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validate form fields
     if (!description || !amount) {
-      alert('Please enter description and amount');
+      setError('Please enter description and amount');
       return;
     }
     // Convert amount to a number
     const amountNum = Number(amount);
     if (isNaN(amountNum)) {
-      alert('Please enter a valid amount');
+      setError('Please enter a valid amount');
       return;
     }
 
@@ -31,6 +32,7 @@ function AddTransaction({ onAddTransaction  }) {
     onAddTransaction(newTransaction);
 
     // Clear the form fields
+    setError('');
     setDescription('');
     setAmount('');
     setType('income');
@@ -41,6 +43,7 @@ function AddTransaction({ onAddTransaction  }) {
       <h2>Add Transaction</h2>
 
       <form className="transaction-form" onSubmit={handleSubmit}>
+        {error && <p className="error-message">{error}</p>}
         <div className="form-row">
           <div className="form-group">
             <input 

@@ -66,7 +66,7 @@ function App() {
     <div className="App">
       <Header />
       <hr />
-      <BalanceSummary />
+      <BalanceSummary transactions={transactions} />
       <hr />
 
       <Type 
