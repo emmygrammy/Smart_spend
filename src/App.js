@@ -8,6 +8,7 @@ import Transaction from './components/Transaction';
 import AddTransaction from './components/AddTransaction';
 import Type from './components/Type';
 import ConfirmModal from './components/ConfirmModal.jsx';
+import Transactions from './components/Transaction';
 
 
 
@@ -41,6 +42,7 @@ const initialTransactions = [
 function App() {
   const [transactions, setTransactions] = useState(initialTransactions);
   const [transactionToDelete, setTransactionToDelete] = useState(null);
+  const [filterType, setFilterType] = useState('all');
 
   const addTransaction = (transaction) => {
     // Add new transaction to the transactions list
@@ -53,13 +55,23 @@ function App() {
     );
   };
 
+  const filteredTransactions = transactions.filter((transaction) => {
+    if (filterType === 'all') {
+      return true;
+    }
+    return transaction.type === filterType;
+  });
+
   return (
     <div className="App">
       <Header />
       <hr />
       <BalanceSummary />
       <hr />
-      <Type />
+
+      <Type 
+      filterType={filterType} 
+      setFilterType={setFilterType} />
       <hr />
 
       {transactionToDelete && (
@@ -71,8 +83,8 @@ function App() {
           onCancel={() => setTransactionToDelete(null)}
         />
       )}
-      <Transaction
-        transactions={transactions}
+      <Transactions
+        transactions={filteredTransactions}
         onDeleteTransaction={deleteTransaction}
         transactionToDelete={transactionToDelete}
         setTransactionToDelete={setTransactionToDelete}

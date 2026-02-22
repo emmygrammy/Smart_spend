@@ -1,4 +1,4 @@
-function Transaction({ transactions, setTransactionToDelete }) {
+function Transactions({ transactions, setTransactionToDelete }) {
   return (
     <div>
       <h2>Transaction</h2>
@@ -44,4 +44,4 @@ function TransactionItem({ transaction, setTransactionToDelete }) {
   );
 }
 
-export default Transaction;
+export default Transactions;
